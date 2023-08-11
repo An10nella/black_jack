@@ -14,13 +14,9 @@ startBtnEl.addEventListener("click",function(){
     let card01 = Math.floor(Math.random()*13)+1
     let card02 = Math.floor(Math.random()*13)+1
     // let card02 = Math.floor(Math.random(cards)*cards.length)
-    
-
     // sumCount = cards[card01] + cards[card02]
     sumCount = card01 + card02
-   
     gameBtn.innerHTML  = `Cards: ${card01} ${card02} `
-
     // gameBtn.innerHTML  = `Cards: ${cards[card01]} ${cards[card02]} `
     sumScoreEL.innerHTML = ` Sum:${ sumCount}`
     if (sumCount === win) {
@@ -30,10 +26,7 @@ startBtnEl.addEventListener("click",function(){
       }
       
     //     gameBtn.innerHTML  = `Cards: ${cards[card01]} ${cards[card02]} `
-
-   
     // gameBtn.innerHTML = `Cards : ${cards[card01]} ${cards[card02]} ${cards[card01]} `
-    
     // console.log(card02)
     // console.log(card02)
 
