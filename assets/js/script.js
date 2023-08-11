@@ -5,7 +5,7 @@ let resetBtnEl = document.getElementById("resetBtn")
 let sumScoreEL = document.getElementById("sumScore")
 let questPlay = document.getElementById("playQuestion")
 let sumCount = 0
-
+let cardsCount = 0
 
 const cards = [10,11]
 let win = 21
@@ -14,8 +14,8 @@ startBtnEl.addEventListener("click",function(){
     // let card02 = Math.floor(Math.random()*13)+1
     let card02 = Math.floor(Math.random(cards)*cards.length)
     
-    sumCount = cards[card01] + cards [card02] + Math.floor(Math.random() * 10) + 1
-    console.log(su)
+    sumCount = cards[card01] + cards[card02] 
+   
 
     // let difference = 0
     gameBtn.innerHTML  = `Cards: ${cards[card01]} ${cards[card02]} `
@@ -47,15 +47,19 @@ startBtnEl.addEventListener("click",function(){
 )
 
 newBtnEl.addEventListener("click",function(){
-    gameBtn.innerHTML = `Cards: Cards: ${cards[card01]} ${cards[card02] + Math.floor(Math.random() * 10) + 1} `
+    sumCount = 0
+    let randomCard = Math.floor(Math.random() * 13) + 1
+    gameBtn.innerHTML += ` ${randomCard}`
+    // gameBtn.innerHTML = `Cards: ${cards[card01]} ${cards[card02]} ${ Math.floor(Math.random() * 13) + 1} `
     sumScoreEL.innerHTML = `Sum:`
     questPlay.innerText = `Want to play a round?`
 
 })
 
 resetBtnEl.addEventListener("click",function(){
+   
     sumCount = 0
-    gameBtn.innerHTML = `Cards:`
+    gameBtn.innerHTML = 'Cards:'
     sumScoreEL.innerHTML =`Sum:`
     questPlay.innerText = `play?`
     // resetBtnEl.cardsCount = 
