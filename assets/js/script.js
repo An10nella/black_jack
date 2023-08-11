@@ -10,14 +10,8 @@ let cardsCount = 0
 let randomCard = 0
 let balanceAdmin = 200
 
-
-
-
-
 // const cards = [1,2,3,4,5,6,7,8,9,10,11]
 let win = 21
-
-
 startBtnEl.addEventListener("click",function(){
     
     let card01 = Math.floor(Math.random()*13)+1
@@ -30,9 +24,6 @@ startBtnEl.addEventListener("click",function(){
     sumCount = card01 + card02
     gameBtn.innerHTML  = `Cards: ${card01} ${card02} `
    
-    
-
-    
     // gameBtn.innerHTML  = `Cards: ${cards[card01]} ${cards[card02]} `
     sumScoreEL.innerHTML = ` Sum:${ sumCount}`
     
@@ -47,21 +38,16 @@ startBtnEl.addEventListener("click",function(){
     // gameBtn.innerHTML = `Cards : ${cards[card01]} ${cards[card02]} ${cards[card01]} `
     // console.log(card02)
     // console.log(card02)
-
 }
 )
-
 newBtnEl.addEventListener("click", function () {
     if (balanceAdmin >= 50) {
         balanceAdmin -= 50
         bNameEl.textContent = `Antonella: $${balanceAdmin}`
 
-
-
-
     sumCount += randomCard
     randomCard = Math.floor(Math.random() * 13) + 1
-    randCount = sumCount + randomCard
+    randCount = sumCount + randomCard 
   //   console.log(randCount)
     gameBtn.innerHTML += ` ${randomCard}`
     sumScoreEL.innerHTML = ` Sum:  ${randCount} `
@@ -79,8 +65,6 @@ resetBtnEl.addEventListener("click",function(){
     gameBtn.innerHTML = 'Cards:'
     sumScoreEL.innerHTML =`Sum:`
     questPlay.innerText = `Want to play again?`
-    // resetBtnEl.cardsCount = 
-
 
 })
 
