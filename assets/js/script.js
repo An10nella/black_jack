@@ -32,6 +32,7 @@ startBtnEl.addEventListener("click",function(){
       } else {
         questPlay.innerText = 'try again ?'
       }
+      
 
     
     //     gameBtn.innerHTML  = `Cards: ${cards[card01]} ${cards[card02]} `
@@ -44,6 +45,9 @@ newBtnEl.addEventListener("click", function () {
     if (balanceAdmin >= 50) {
         balanceAdmin -= 50
         bNameEl.textContent = `Antonella: $${balanceAdmin}`
+       
+
+        
 
     sumCount += randomCard
     randomCard = Math.floor(Math.random() * 13) + 1
@@ -55,6 +59,12 @@ newBtnEl.addEventListener("click", function () {
     }else {
         questPlay.innerText = `Insufficient balance!`
     }
+    if (randCount === win) {
+        questPlay.innerText = "Congratulations, You win!";
+    } else {
+        questPlay.innerText = "Want to add more?";
+    }
+    
   })
 
 resetBtnEl.addEventListener("click",function(){
