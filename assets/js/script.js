@@ -12,64 +12,66 @@ let balanceAdmin = 200
 
 // const cards = [1,2,3,4,5,6,7,8,9,10,11]
 let win = 21
-startBtnEl.addEventListener("click",function(){
-    
-    let card01 = Math.floor(Math.random()*13)+1
-    let card02 = Math.floor(Math.random()*13)+1
-   
-    bNameEl.innerHTML= `Antonella: $${balanceAdmin}`
-    
-    
-    // let card02 = Math.floor(Math.random(cards)*cards.length)
-    sumCount = card01 + card02
-    gameBtn.innerHTML  = `Cards: ${card01} ${card02} `
-   
-    // gameBtn.innerHTML  = `Cards: ${cards[card01]} ${cards[card02]} `
-    sumScoreEL.innerHTML = ` Sum:${ sumCount}`
-    
-    if (sumCount === win) {
-        questPlay.innerText = `Congratulations, You win!`
-      } else {
-        questPlay.innerText = 'try again ?'
-      }
-      
+let oneTrial = false
+let maxNumb = false
 
-    
-    //     gameBtn.innerHTML  = `Cards: ${cards[card01]} ${cards[card02]} `
-    // gameBtn.innerHTML = `Cards : ${cards[card01]} ${cards[card02]} ${cards[card01]} `
-    // console.log(card02)
-    // console.log(card02)
-}
-)
+startBtnEl.addEventListener("click", function () {
+    if (!oneTrial && balanceAdmin >= 50) {
+        oneTrial = true 
+        balanceAdmin -= 50
+
+        let card01 = Math.floor(Math.random() * 11) + 1;
+        let card02 = Math.floor(Math.random() * 11) + 1;
+        sumCount = card01 + card02;
+
+        bNameEl.innerHTML = `Antonella: $${balanceAdmin}`;
+        gameBtn.innerHTML = `Cards: ${card01} ${card02}`;
+        sumScoreEL.innerHTML = `Sum: ${sumCount}`;
+
+        // if (sumCount === win) {
+        //     questPlay.innerText = "Congratulations, You win!";
+        // } else {
+        //     questPlay.innerText = "Try again?";
+        // }
+    } else {
+        questPlay.innerText = "Cannot start another trial.";
+    }
+})
 newBtnEl.addEventListener("click", function () {
     if (balanceAdmin >= 50) {
         balanceAdmin -= 50
         bNameEl.textContent = `Antonella: $${balanceAdmin}`
        
-
-        
-
     sumCount += randomCard
     randomCard = Math.floor(Math.random() * 13) + 1
     randCount = sumCount + randomCard 
   //   console.log(randCount)
+
     gameBtn.innerHTML += ` ${randomCard}`
     sumScoreEL.innerHTML = ` Sum:  ${randCount} `
-    questPlay.innerText = 'want to add more?'
-    }else {
-        questPlay.innerText = `Insufficient balance!`
-    }
-    if (randCount === win) {
-        questPlay.innerText = "Congratulations, You win!";
-    } else {
-        questPlay.innerText = "Want to add more?";
-    }
-    
+   
+    if (randCount > win) {
+        questPlay.innerText = "You have exceeded the number required!"
+        maxNumb = true
+
+    } else if (randCount == win) {
+        questPlay.innerText = "Congratulations, You win!"  
+        } else {
+            questPlay.innerText = "Want to add more?"
+        }
+
+} else  {
+    questPlay.innerText = "You have exceeded the number required!"
+    maxNumb = true
+}
+
   })
 
 resetBtnEl.addEventListener("click",function(){
     randomCard = 0
     sumCount = 0
+    cardsCount = 0
+    oneTrial = false
     balanceAdmin = 200
     bNameEl.textContent = `Antonella: $${balanceAdmin}`
     gameBtn.innerHTML = 'Cards:'
