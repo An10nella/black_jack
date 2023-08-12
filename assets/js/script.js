@@ -14,10 +14,12 @@ let balanceAdmin = 200
 let win = 21
 let oneTrial = false
 let maxNumb = false
+let startGame = false
 
 startBtnEl.addEventListener("click", function () {
     if (!oneTrial && balanceAdmin >= 50) {
         oneTrial = true 
+        startGame = true
         balanceAdmin -= 50
 
         let card01 = Math.floor(Math.random() * 13) + 1
@@ -38,6 +40,9 @@ startBtnEl.addEventListener("click", function () {
     }
 })
 newBtnEl.addEventListener("click", function () {
+
+if (startGame){
+
     if (balanceAdmin >= 50 && !maxNumb) {
         balanceAdmin -= 50
         bNameEl.textContent = `Antonella: $${balanceAdmin}`
@@ -66,6 +71,9 @@ newBtnEl.addEventListener("click", function () {
     } else {
     questPlay.innerText = "You have exceeded the number required!"
     }
+}else {
+    questPlay.innerText = "Please Start Game first!"
+}
   })
 
 resetBtnEl.addEventListener("click",function(){
@@ -74,6 +82,7 @@ resetBtnEl.addEventListener("click",function(){
     cardsCount = 0
     oneTrial = false
     maxNumb = false
+    startGame = false
     balanceAdmin = 200
     bNameEl.textContent = `Antonella: $${balanceAdmin}`
     gameBtn.innerHTML = 'Cards:'
